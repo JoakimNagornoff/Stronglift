@@ -17,26 +17,47 @@ const SPACING_FOR_CARD_INSET = Dimensions.get('window').width * 0.1;
 
 type CardType = {
   name: string;
+  id: number;
 };
-const cards = [{name: 'Card 1'}, {name: 'Card 2'}];
+const cards = [
+  {name: 'Card 1', id: 1},
+  {name: 'Card 2', id: 2},
+  {name: 'Card 3', id: 1},
+  {name: 'Card 4', id: 2},
+];
 
 const CardView = () => {
-  const _renderView = (views: CardType[]): JSX.Element[] => {
+  const _renderView = (views: CardType[]) => {
     return views.map(card => {
       return (
         <View style={styles.cardStyle}>
-          <Text>{card.name}</Text>
-          <View style={styles.flatlistA}>
-            <FlatlistTraningA />
-          </View>
-
-          <View style={styles.FlatListB}>
-            <FlatListTraningB />
-          </View>
+          {card.id === 1 && (
+            <>
+              <Text>{card.name}</Text>
+              <View style={styles.flatlistA}>
+                <FlatlistTraningA />
+              </View>
+              <View style={styles.FlatListB}>
+                <FlatListTraningB />
+              </View>
+            </>
+          )}
+          {card.id === 2 && (
+            <>
+              <Text>{card.name}</Text>
+              <View style={styles.flatlistA}>
+                <FlatListTraningB />
+              </View>
+              <View style={styles.FlatListB}>
+                <FlatlistTraningA />
+              </View>
+            </>
+          )}
         </View>
       );
     });
   };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
@@ -75,14 +96,14 @@ const styles = StyleSheet.create({
   },
   flatlistA: {
     flex: 0.5,
-    backgroundColor: 'blue',
+
     alignItems: 'center',
     marginTop: 20,
     marginBottom: 20,
   },
   FlatListB: {
     flex: 0.5,
-    backgroundColor: 'red',
+
     alignItems: 'center',
     marginTop: 20,
     marginBottom: 20,

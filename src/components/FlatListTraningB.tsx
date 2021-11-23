@@ -90,7 +90,6 @@ const styles = StyleSheet.create({
     padding: 18,
     marginVertical: 2,
     marginHorizontal: 2,
-    justifyContent: 'space-between',
   },
   title: {
     fontWeight: 'bold',

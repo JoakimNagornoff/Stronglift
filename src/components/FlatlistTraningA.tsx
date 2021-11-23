@@ -66,6 +66,7 @@ const FlatlistTraningA = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text>Traning A</Text>
       <FlatList
         horizontal
         data={DATA}
