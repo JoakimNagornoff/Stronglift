@@ -7,10 +7,10 @@ import {
   ScrollView,
   StyleSheet,
   Platform,
-  FlatList,
 } from 'react-native';
-import FlatlistTraningA from './FlatlistTraningA';
-import FlatListTraningB from './FlatListTraningB';
+import CardListA from './CardLIstA';
+import CardListB from './CardListB';
+
 const CARD_WIDTH = Dimensions.get('window').width * 0.8;
 const CARD_HEIGHT = Dimensions.get('window').height * 0.7;
 const SPACING_FOR_CARD_INSET = Dimensions.get('window').width * 0.1;
@@ -18,12 +18,11 @@ const SPACING_FOR_CARD_INSET = Dimensions.get('window').width * 0.1;
 type CardType = {
   name: string;
   id: number;
+  theme: number;
 };
 const cards = [
-  {name: 'Card 1', id: 1},
-  {name: 'Card 2', id: 2},
-  {name: 'Card 3', id: 1},
-  {name: 'Card 4', id: 2},
+  {name: 'Card 1', id: '1', theme: 1},
+  {name: 'Card 2', id: '2', theme: 2},
 ];
 
 const CardView = () => {
@@ -31,25 +30,29 @@ const CardView = () => {
     return views.map(card => {
       return (
         <View style={styles.cardStyle}>
-          {card.id === 1 && (
+          {card.theme === 1 && (
             <>
               <Text>{card.name}</Text>
               <View style={styles.flatlistA}>
-                <FlatlistTraningA />
+                <Text>TRANING A</Text>
+                <CardListA />
               </View>
               <View style={styles.FlatListB}>
-                <FlatListTraningB />
+                <Text>TRANING B</Text>
+                <CardListB />
               </View>
             </>
           )}
-          {card.id === 2 && (
+          {card.theme === 2 && (
             <>
               <Text>{card.name}</Text>
               <View style={styles.flatlistA}>
-                <FlatListTraningB />
+                <Text>TRANING B</Text>
+                <CardListB />
               </View>
               <View style={styles.FlatListB}>
-                <FlatlistTraningA />
+                <Text>TRANING A</Text>
+                <CardListA />
               </View>
             </>
           )}
@@ -83,8 +86,6 @@ const CardView = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   cardStyle: {
     width: CARD_WIDTH,
@@ -96,15 +97,11 @@ const styles = StyleSheet.create({
   },
   flatlistA: {
     flex: 0.5,
-
-    alignItems: 'center',
     marginTop: 20,
     marginBottom: 20,
   },
   FlatListB: {
     flex: 0.5,
-
-    alignItems: 'center',
     marginTop: 20,
     marginBottom: 20,
   },
