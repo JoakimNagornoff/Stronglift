@@ -1,8 +1,14 @@
 import {combineReducers} from 'redux';
+import {TraningState} from './Weights/actions/types';
 
-export interface ApplicationState {}
+import TraningReducer from './Weights/reducers/TraningReducer';
+export interface ApplicationState {
+  traning: TraningState;
+}
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  traning: TraningReducer,
+});
 
 export default rootReducer;
 

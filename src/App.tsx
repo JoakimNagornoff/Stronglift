@@ -1,37 +1,23 @@
 import React from 'react';
-import {
-  Dimensions,
-  View,
-  Text,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Platform,
-} from 'react-native';
-import CardView from './components/CardView';
 
-const CARD_WIDTH = Dimensions.get('window').width * 0.8;
-const CARD_HEIGHT = Dimensions.get('window').height * 0.7;
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-const App = () => {
-  return <CardView />;
-};
+import HomeScreen from './screens/HomeScreen';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cardStyle: {
-    width: CARD_WIDTH,
-    height: CARD_HEIGHT,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'green',
-    margin: 5,
-    borderRadius: 15,
-  },
-});
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <SafeAreaProvider>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+        </Stack.Navigator>
+      </SafeAreaProvider>
+    </NavigationContainer>
+  );
+}
 
 export default App;
