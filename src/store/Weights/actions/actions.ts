@@ -1,7 +1,8 @@
 import {
   TraningActionTypes,
   HOW_MANY_WEEKS_TRANING,
-  ADD_NEW_TRANING_A,
+  IS_FIRST_WEEK,
+  ADD_NEW_WORKOUT_A,
 } from './types';
 
 export const AddHowManyWeeksData = (
@@ -13,9 +14,21 @@ export const AddHowManyWeeksData = (
   };
 };
 
-export const AddTraningDayA = (squat: number): TraningActionTypes => {
+export const isFirstWeek = () => {
   return {
-    type: ADD_NEW_TRANING_A,
-    payload: squat,
+    type: IS_FIRST_WEEK,
+    payload: false,
+  };
+};
+export const AddNewWorkoutA = (
+  squat: number,
+  bench: number,
+  barbellrow: number,
+  overhead: number,
+  deadlift: number,
+): TraningActionTypes => {
+  return {
+    type: ADD_NEW_WORKOUT_A,
+    payload: {squat, bench, barbellrow, overhead, deadlift},
   };
 };

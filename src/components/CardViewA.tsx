@@ -1,23 +1,13 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-import {connect, ConnectedProps, useDispatch, useSelector} from 'react-redux';
-import {compose} from 'redux';
-import {RootState} from '../store';
-import {AddTraningDayA} from '../store/Weights/actions/actions';
-import {TraningState} from '../store/Weights/actions/types';
-
-//slutade här: fixa dipsatch function så nåt läggs till till storen
+import {useAppSelector} from '../store/Weights/hooks';
 
 const CardViewA = () => {
-  const squat = useSelector((state: RootState) => state.traning.squat);
+  const squat = useAppSelector(state => state.traning.squat);
+  const bench = useAppSelector(state => state.traning.bench);
+  const barbellrow = useAppSelector(state => state.traning.barbellrow);
 
-  const bench = useSelector((state: RootState) => state.traning.bench);
-  const barbellrow = useSelector(
-    (state: RootState) => state.traning.barbellrow,
-  );
-
-  const [isMondayDone, setIsMondayDone] = useState(false);
   return (
     <View style={styles.item}>
       <View style={styles.firstView}>
@@ -28,9 +18,10 @@ const CardViewA = () => {
       </View>
       <View style={styles.secondView}>
         <Text style={styles.secondTitle}>Today </Text>
-        <Text style={styles.secondViewText}>Squat</Text>
-        <Text style={styles.secondViewText}>Bench</Text>
-        <Text style={styles.secondViewText}>Barbell row</Text>
+
+        <Text style={styles.secondViewText}>5x5 {squat} kg</Text>
+        <Text style={styles.secondViewText}>5x5 {bench} kg</Text>
+        <Text style={styles.secondViewText}>5x5 {barbellrow + 5} kg</Text>
       </View>
     </View>
   );
@@ -39,7 +30,6 @@ const CardViewA = () => {
 const styles = StyleSheet.create({
   item: {
     flex: 1,
-    backgroundColor: '#f9c2ff',
     padding: 10,
     marginVertical: 2,
     marginHorizontal: 2,

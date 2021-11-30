@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {useAppSelector} from '../store/Weights/hooks';
 
-const CardViewB = () => {
+const CardViewB2 = () => {
   const squat = useAppSelector(state => state.traning.squat);
   const overhead = useAppSelector(state => state.traning.overhead);
   const deadlift = useAppSelector(state => state.traning.deadlift);
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
-export default CardViewB;
+export default CardViewB2;

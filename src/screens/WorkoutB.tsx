@@ -1,9 +1,19 @@
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
-import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 import CardViewA from '../components/CardViewA';
 import CardViewB from '../components/CardVIewB';
+import CardViewB2 from '../components/CardViewB2';
 
 const WorkoutB = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.firstView}>
@@ -13,7 +23,15 @@ const WorkoutB = () => {
         <CardViewA />
       </View>
       <View style={styles.thirdView}>
-        <CardViewB />
+        <CardViewB2 />
+      </View>
+      <View>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('WorkoutA');
+          }}>
+          <Text>DONE</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

@@ -2,31 +2,32 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {useAppSelector} from '../store/Weights/hooks';
 
-const CardViewB = () => {
+const CardViewA2 = () => {
   const squat = useAppSelector(state => state.traning.squat);
-  const overhead = useAppSelector(state => state.traning.overhead);
-  const deadlift = useAppSelector(state => state.traning.deadlift);
+  const bench = useAppSelector(state => state.traning.bench);
+  const barbellrow = useAppSelector(state => state.traning.barbellrow);
+
   return (
     <View style={styles.item}>
       <View style={styles.firstView}>
-        <Text style={styles.title}>WorkoutB</Text>
+        <Text style={styles.title}>WorkoutA</Text>
         <Text>Squat</Text>
-        <Text>Overhead Press</Text>
-        <Text>Deadlift</Text>
+        <Text>Bench</Text>
+        <Text>Barbell row</Text>
       </View>
       <View style={styles.secondView}>
         <Text style={styles.secondTitle}>Today </Text>
-        <Text style={styles.secondViewText}>5x5 {squat + 2.5} kg</Text>
-        <Text style={styles.secondViewText}>5x5 {overhead + 2.5} kg</Text>
-        <Text style={styles.secondViewText}>5x5 {deadlift + 5} kg</Text>
+        <Text style={styles.secondViewText}>5x5 {squat + 5} kg</Text>
+        <Text style={styles.secondViewText}>5x5 {bench + 2.5} kg</Text>
+        <Text style={styles.secondViewText}>5x5 {barbellrow + 2.5} kg</Text>
       </View>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   item: {
     flex: 1,
-    backgroundColor: '#f9c2ff',
     padding: 10,
     marginVertical: 2,
     marginHorizontal: 2,
@@ -52,5 +53,9 @@ const styles = StyleSheet.create({
   secondViewText: {
     textAlign: 'right',
   },
+  buttonView: {
+    backgroundColor: 'red',
+    flexDirection: 'row-reverse',
+  },
 });
-export default CardViewB;
+export default CardViewA2;

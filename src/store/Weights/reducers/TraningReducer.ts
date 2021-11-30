@@ -2,11 +2,13 @@ import {
   TraningState,
   HOW_MANY_WEEKS_TRANING,
   TraningActionTypes,
-  ADD_NEW_TRANING_A,
+  IS_FIRST_WEEK,
+  ADD_NEW_WORKOUT_A,
 } from '../actions/types';
 
 const initialState: TraningState = {
   howManyWeeks: 2,
+  isFirstWeek: true,
   squat: 20,
   overhead: 20,
   deadlift: 20,
@@ -25,10 +27,20 @@ const TraningReducer = (
         howManyWeeks: action.payload,
       };
     }
-    case ADD_NEW_TRANING_A: {
+    case IS_FIRST_WEEK: {
       return {
         ...state,
-        squat: action.payload,
+        isFirstWeek: action.payload,
+      };
+    }
+    case ADD_NEW_WORKOUT_A: {
+      return {
+        ...state,
+        squat: action.payload.squat,
+        bench: action.payload.bench,
+        barbellrow: action.payload.barbellrow,
+        overhead: action.payload.overhead,
+        deadlift: action.payload.deadlift,
       };
     }
     default:
