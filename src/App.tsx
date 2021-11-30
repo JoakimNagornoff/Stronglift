@@ -9,6 +9,8 @@ import {Provider} from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 
 import HomeScreen from './screens/HomeScreen';
+import WorkoutA from './screens/WorkoutA';
+import WorkoutB from './screens/WorkoutB';
 import rootReducer from './store/index';
 
 const Stack = createNativeStackNavigator();
@@ -24,8 +26,12 @@ function App() {
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
-          <Stack.Navigator>
+          <Stack.Navigator
+            screenOptions={{gestureEnabled: true}}
+            initialRouteName="WorkoutA">
             <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="WorkoutA" component={WorkoutA} />
+            <Stack.Screen name="WorkoutB" component={WorkoutB} />
           </Stack.Navigator>
         </SafeAreaProvider>
       </NavigationContainer>
