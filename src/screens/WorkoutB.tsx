@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/core';
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import CardViewB from '../components/CardVIewB';
 import CardViewB2 from '../components/CardViewB2';
 import {AddNewWorkoutB, isWorkoutADone} from '../store/Weights/actions/actions';
 import {useAppSelector} from '../store/Weights/hooks';
+import Icon from 'react-native-vector-icons/Feather';
 
 const WorkoutB = () => {
   const navigation = useNavigation();
@@ -23,6 +24,10 @@ const WorkoutB = () => {
   const barbellrow = useAppSelector(state => state.traning.barbellrow);
   const overhead = useAppSelector(state => state.traning.overhead);
   const deadlift = useAppSelector(state => state.traning.deadlift);
+
+  const [isFirstB, setIsFirstB] = useState(false);
+  const [isSecondB, setIsSecondB] = useState(false);
+  const [isThirdB, setIsThirdB] = useState(false);
 
   const newWorkoutB = () => {
     const newSquat = squat + 7.5;
@@ -45,19 +50,44 @@ const WorkoutB = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.firstView}>
         <CardViewB />
+        <TouchableOpacity
+          style={styles.checkButton}
+          onPress={() => {
+            setIsFirstB(!isFirstB);
+          }}>
+          <Icon name={isFirstB ? 'check-circle' : 'circle'} size={30} />
+        </TouchableOpacity>
       </View>
       <View style={styles.secondView}>
         <CardViewA />
+        <TouchableOpacity
+          style={styles.checkButton}
+          onPress={() => {
+            setIsSecondB(!isSecondB);
+          }}>
+          <Icon name={isSecondB ? 'check-circle' : 'circle'} size={30} />
+        </TouchableOpacity>
       </View>
       <View style={styles.thirdView}>
         <CardViewB2 />
+        <TouchableOpacity
+          style={styles.checkButton}
+          onPress={() => {
+            setIsThirdB(!isThirdB);
+          }}>
+          <Icon name={isThirdB ? 'check-circle' : 'circle'} size={30} />
+        </TouchableOpacity>
       </View>
       <View>
         <TouchableOpacity
+          disabled={!Boolean(isFirstB && isSecondB && isThirdB)}
           onPress={() => {
             navigation.navigate('WorkoutA');
             newWorkoutB();
             dispatch(isWorkoutADone());
+            setIsFirstB(!isFirstB);
+            setIsSecondB(!isSecondB);
+            setIsThirdB(!isThirdB);
           }}>
           <Text>DONE</Text>
         </TouchableOpacity>
@@ -78,6 +108,9 @@ const styles = StyleSheet.create({
   },
   thirdView: {
     flex: 0.3,
+  },
+  checkButton: {
+    alignItems: 'center',
   },
 });
 

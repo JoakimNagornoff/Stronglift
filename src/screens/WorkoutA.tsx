@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/core';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -16,9 +16,9 @@ import CardViewB from '../components/CardVIewB';
 import {AddNewWorkoutA, WorkoutAdone} from '../store/Weights/actions/actions';
 import {useAppSelector} from '../store/Weights/hooks';
 
-//what do to
+import Icon from 'react-native-vector-icons/Feather';
 
-//2. fix buttons for done workout for every day
+//what do to
 //3. edit weight and add to redux store
 
 const WorkoutA = () => {
@@ -31,6 +31,10 @@ const WorkoutA = () => {
   const barbellrow = useAppSelector(state => state.traning.barbellrow);
   const overhead = useAppSelector(state => state.traning.overhead);
   const deadlift = useAppSelector(state => state.traning.deadlift);
+
+  const [isFirstA, setIsFirstA] = useState(false);
+  const [isSecondA, setIsSecondA] = useState(false);
+  const [isThirdA, setIsThirdA] = useState(false);
 
   const newWorkout = () => {
     //dispatch function everything from the week to workout B
@@ -49,23 +53,49 @@ const WorkoutA = () => {
       ),
     );
   };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.firstView}>
         <CardViewA />
+
+        <TouchableOpacity
+          onPress={() => {
+            setIsFirstA(!isFirstA);
+          }}
+          style={styles.checkButton}>
+          <Icon name={isFirstA ? 'check-circle' : 'circle'} size={30} />
+        </TouchableOpacity>
       </View>
+
       <View style={styles.secondView}>
         <CardViewB />
+        <TouchableOpacity
+          style={styles.checkButton}
+          onPress={() => setIsSecondA(!isSecondA)}>
+          <Icon name={isSecondA ? 'check-circle' : 'circle'} size={30} />
+        </TouchableOpacity>
       </View>
       <View style={styles.thirdView}>
         <CardViewA2 />
+        <TouchableOpacity
+          onPress={() => {
+            setIsThirdA(!isThirdA);
+          }}
+          style={styles.checkButton}>
+          <Icon name={isThirdA ? 'check-circle' : 'circle'} size={30} />
+        </TouchableOpacity>
       </View>
       <View>
         <TouchableOpacity
+          disabled={!Boolean(isFirstA && isSecondA && isThirdA)}
           onPress={() => {
             navigation.navigate('WorkoutB');
             newWorkout();
             dispatch(WorkoutAdone());
+            setIsFirstA(!isFirstA);
+            setIsSecondA(!isSecondA);
+            setIsThirdA(!isThirdA);
           }}>
           <Text>DONE</Text>
         </TouchableOpacity>
@@ -88,6 +118,9 @@ const styles = StyleSheet.create({
     flex: 0.3,
   },
   firsViewButton: {
+    alignItems: 'center',
+  },
+  checkButton: {
     alignItems: 'center',
   },
 });
