@@ -1,11 +1,14 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+
 import {useAppSelector} from '../store/Weights/hooks';
 
 const CardViewB = () => {
   const squat = useAppSelector(state => state.traning.squat);
   const overhead = useAppSelector(state => state.traning.overhead);
   const deadlift = useAppSelector(state => state.traning.deadlift);
+  const isWorkoutADone = useAppSelector(state => state.traning.isWorkoutADone);
+
   return (
     <View style={styles.item}>
       <View style={styles.firstView}>
@@ -16,9 +19,20 @@ const CardViewB = () => {
       </View>
       <View style={styles.secondView}>
         <Text style={styles.secondTitle}>Today </Text>
-        <Text style={styles.secondViewText}>5x5 {squat + 2.5} kg</Text>
-        <Text style={styles.secondViewText}>5x5 {overhead + 2.5} kg</Text>
-        <Text style={styles.secondViewText}>5x5 {deadlift + 5} kg</Text>
+        {isWorkoutADone && (
+          <>
+            <Text style={styles.secondViewText}>5x5 {squat} kg</Text>
+            <Text style={styles.secondViewText}>5x5 {overhead} kg</Text>
+            <Text style={styles.secondViewText}>5x5 {deadlift} kg</Text>
+          </>
+        )}
+        {!isWorkoutADone && (
+          <>
+            <Text style={styles.secondViewText}>5x5 {squat + 2.5} kg</Text>
+            <Text style={styles.secondViewText}>5x5 {overhead + 2.5} kg</Text>
+            <Text style={styles.secondViewText}>5x5 {deadlift + 5} kg</Text>
+          </>
+        )}
       </View>
     </View>
   );

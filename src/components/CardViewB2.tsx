@@ -16,7 +16,7 @@ const CardViewB2 = () => {
       </View>
       <View style={styles.secondView}>
         <Text style={styles.secondTitle}>Today </Text>
-        <Text style={styles.secondViewText}>5x5 {squat + 2.5} kg</Text>
+        <Text style={styles.secondViewText}>5x5 {squat + 5} kg</Text>
         <Text style={styles.secondViewText}>5x5 {overhead + 2.5} kg</Text>
         <Text style={styles.secondViewText}>5x5 {deadlift + 5} kg</Text>
       </View>

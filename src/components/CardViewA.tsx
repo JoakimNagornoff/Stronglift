@@ -7,6 +7,7 @@ const CardViewA = () => {
   const squat = useAppSelector(state => state.traning.squat);
   const bench = useAppSelector(state => state.traning.bench);
   const barbellrow = useAppSelector(state => state.traning.barbellrow);
+  const isWorkoutADone = useAppSelector(state => state.traning.isWorkoutADone);
 
   return (
     <View style={styles.item}>
@@ -18,10 +19,20 @@ const CardViewA = () => {
       </View>
       <View style={styles.secondView}>
         <Text style={styles.secondTitle}>Today </Text>
-
-        <Text style={styles.secondViewText}>5x5 {squat} kg</Text>
-        <Text style={styles.secondViewText}>5x5 {bench} kg</Text>
-        <Text style={styles.secondViewText}>5x5 {barbellrow + 5} kg</Text>
+        {isWorkoutADone && (
+          <>
+            <Text style={styles.secondViewText}>5x5 {squat + 2.5} kg</Text>
+            <Text style={styles.secondViewText}>5x5 {bench + 2.5} kg</Text>
+            <Text style={styles.secondViewText}>5x5 {barbellrow + 2.5} kg</Text>
+          </>
+        )}
+        {!isWorkoutADone && (
+          <>
+            <Text style={styles.secondViewText}>5x5 {squat} kg</Text>
+            <Text style={styles.secondViewText}>5x5 {bench} kg</Text>
+            <Text style={styles.secondViewText}>5x5 {barbellrow} kg</Text>
+          </>
+        )}
       </View>
     </View>
   );

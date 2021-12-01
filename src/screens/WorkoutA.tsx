@@ -13,8 +13,13 @@ import CardViewA from '../components/CardViewA';
 import CardViewA2 from '../components/CardViewA2';
 import CardViewB from '../components/CardVIewB';
 
-import {AddNewWorkoutA} from '../store/Weights/actions/actions';
+import {AddNewWorkoutA, WorkoutAdone} from '../store/Weights/actions/actions';
 import {useAppSelector} from '../store/Weights/hooks';
+
+//what do to
+
+//2. fix buttons for done workout for every day
+//3. edit weight and add to redux store
 
 const WorkoutA = () => {
   const navigation = useNavigation();
@@ -29,9 +34,9 @@ const WorkoutA = () => {
 
   const newWorkout = () => {
     //dispatch function everything from the week to workout B
-    const newSquat = squat + 5;
-    const newBench = bench + 2.5;
-    const newBarbellrow = barbellrow + 2.5;
+    const newSquat = squat + 7.5;
+    const newBench = bench + 5;
+    const newBarbellrow = barbellrow + 5;
     const newOverhead = overhead + 2.5;
     const newDeadlift = deadlift + 5;
     dispatch(
@@ -60,6 +65,7 @@ const WorkoutA = () => {
           onPress={() => {
             navigation.navigate('WorkoutB');
             newWorkout();
+            dispatch(WorkoutAdone());
           }}>
           <Text>DONE</Text>
         </TouchableOpacity>
