@@ -8,9 +8,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
-import CardViewA from '../components/CardViewA';
-import CardViewB from '../components/CardVIewB';
-import CardViewB2 from '../components/CardViewB2';
+import CardViewA from '../components/cardViews/CardViewA';
+import CardViewB from '../components/cardViews/CardVIewB';
+import CardViewB2 from '../components/cardViews/CardViewB2';
 import {AddNewWorkoutB, isWorkoutADone} from '../store/Weights/actions/actions';
 import {useAppSelector} from '../store/Weights/hooks';
 import Icon from 'react-native-vector-icons/Feather';

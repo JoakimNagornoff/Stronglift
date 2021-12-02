@@ -13,6 +13,8 @@ import WorkoutA from './screens/WorkoutA';
 import WorkoutB from './screens/WorkoutB';
 import rootReducer from './store/index';
 
+import Header from './components/header/Header';
+
 const Stack = createNativeStackNavigator();
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
@@ -27,11 +29,25 @@ function App() {
       <NavigationContainer>
         <SafeAreaProvider>
           <Stack.Navigator
-            screenOptions={{gestureEnabled: true}}
+            screenOptions={{
+              gestureEnabled: true,
+            }}
             initialRouteName="WorkoutA">
             <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="WorkoutA" component={WorkoutA} />
-            <Stack.Screen name="WorkoutB" component={WorkoutB} />
+            <Stack.Screen
+              name="WorkoutA"
+              component={WorkoutA}
+              options={{
+                header: () => <Header title="Workout A" />,
+              }}
+            />
+            <Stack.Screen
+              name="WorkoutB"
+              component={WorkoutB}
+              options={{
+                header: () => <Header title="Workout B" />,
+              }}
+            />
           </Stack.Navigator>
         </SafeAreaProvider>
       </NavigationContainer>

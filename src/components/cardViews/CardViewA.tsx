@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-import {useAppSelector} from '../store/Weights/hooks';
+import {useAppSelector} from '../../store/Weights/hooks';
 
 const CardViewA = () => {
   const squat = useAppSelector(state => state.traning.squat);

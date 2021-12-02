@@ -9,9 +9,9 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 
-import CardViewA from '../components/CardViewA';
-import CardViewA2 from '../components/CardViewA2';
-import CardViewB from '../components/CardVIewB';
+import CardViewA from '../components/cardViews/CardViewA';
+import CardViewA2 from '../components/cardViews/CardViewA2';
+import CardViewB from '../components/cardViews/CardVIewB';
 
 import {AddNewWorkoutA, WorkoutAdone} from '../store/Weights/actions/actions';
 import {useAppSelector} from '../store/Weights/hooks';
@@ -19,6 +19,8 @@ import {useAppSelector} from '../store/Weights/hooks';
 import Icon from 'react-native-vector-icons/Feather';
 
 //what do to
+//1. make edit screen
+//2. give every card an id and try to edit one.
 //3. edit weight and add to redux store
 
 const WorkoutA = () => {
@@ -57,6 +59,9 @@ const WorkoutA = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.firstView}>
+        <TouchableOpacity onPress={() => console.log('pressed')}>
+          <Icon name={'edit-2'} size={20} />
+        </TouchableOpacity>
         <CardViewA />
 
         <TouchableOpacity
