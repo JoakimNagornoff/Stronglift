@@ -3,13 +3,11 @@ import React from 'react';
 import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-const EditButton = props => {
+const BackButton = props => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity
-      style={props.style2}
-      onPress={() => navigation.navigate('EditScreen')}>
-      <Icon name={'edit-2'} size={20} />
+    <TouchableOpacity style={props.style1} onPress={() => navigation.goBack()}>
+      <Icon name={'arrow-left'} size={20} />
     </TouchableOpacity>
   );
 };
@@ -24,4 +22,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default EditButton;
+export default BackButton;

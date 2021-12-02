@@ -19,9 +19,11 @@ import {useAppSelector} from '../store/Weights/hooks';
 import Icon from 'react-native-vector-icons/Feather';
 
 //what do to
-//1. make edit screen
-//2. give every card an id and try to edit one.
-//3. edit weight and add to redux store
+//1. border around each card
+//2. add date function
+
+// DO LATER give every card an id and try to edit one.
+// DO LATER edit weight and add to redux store
 
 const WorkoutA = () => {
   const navigation = useNavigation();
@@ -59,11 +61,7 @@ const WorkoutA = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.firstView}>
-        <TouchableOpacity onPress={() => console.log('pressed')}>
-          <Icon name={'edit-2'} size={20} />
-        </TouchableOpacity>
         <CardViewA />
-
         <TouchableOpacity
           onPress={() => {
             setIsFirstA(!isFirstA);
@@ -116,6 +114,7 @@ const styles = StyleSheet.create({
   firstView: {
     flex: 0.3,
   },
+
   secondView: {
     flex: 0.3,
   },

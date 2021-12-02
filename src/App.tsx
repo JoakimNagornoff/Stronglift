@@ -11,9 +11,9 @@ import thunkMiddleware from 'redux-thunk';
 import HomeScreen from './screens/HomeScreen';
 import WorkoutA from './screens/WorkoutA';
 import WorkoutB from './screens/WorkoutB';
+import EditScreen from './screens/EditScreen';
 import rootReducer from './store/index';
-
-import Header from './components/header/Header';
+import EditButton from './components/buttons/EditButton';
 
 const Stack = createNativeStackNavigator();
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
@@ -37,17 +37,17 @@ function App() {
             <Stack.Screen
               name="WorkoutA"
               component={WorkoutA}
-              options={{
-                header: () => <Header title="Workout A" />,
-              }}
+              options={{headerRight: () => <EditButton />}}
             />
             <Stack.Screen
               name="WorkoutB"
               component={WorkoutB}
               options={{
-                header: () => <Header title="Workout B" />,
+                headerRight: () => <EditButton />,
+                headerBackVisible: false,
               }}
             />
+            <Stack.Screen name="EditScreen" component={EditScreen} />
           </Stack.Navigator>
         </SafeAreaProvider>
       </NavigationContainer>
