@@ -60,7 +60,11 @@ const WorkoutA = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.firstView}>
+      <View
+        style={{
+          flex: 0.3,
+          backgroundColor: isFirstA ? '#D3D3D3' : 'white',
+        }}>
         <CardViewA />
         <TouchableOpacity
           onPress={() => {
@@ -71,7 +75,7 @@ const WorkoutA = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.secondView}>
+      <View style={{flex: 0.3, backgroundColor: isSecondA ? 'gray' : 'white'}}>
         <CardViewB />
         <TouchableOpacity
           style={styles.checkButton}
@@ -79,7 +83,8 @@ const WorkoutA = () => {
           <Icon name={isSecondA ? 'check-circle' : 'circle'} size={30} />
         </TouchableOpacity>
       </View>
-      <View style={styles.thirdView}>
+      <View
+        style={{flex: 0.3, backgroundColor: isThirdA ? '#D3D3D3' : 'white'}}>
         <CardViewA2 />
         <TouchableOpacity
           onPress={() => {
@@ -89,8 +94,15 @@ const WorkoutA = () => {
           <Icon name={isThirdA ? 'check-circle' : 'circle'} size={30} />
         </TouchableOpacity>
       </View>
-      <View>
+      <View style={{marginTop: 10}}>
         <TouchableOpacity
+          style={{
+            alignItems: 'center',
+            backgroundColor: !Boolean(isFirstA && isSecondA && isThirdA)
+              ? 'white'
+              : '#89CFF0',
+            padding: 10,
+          }}
           disabled={!Boolean(isFirstA && isSecondA && isThirdA)}
           onPress={() => {
             navigation.navigate('WorkoutB');
@@ -110,11 +122,9 @@ const WorkoutA = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
-  firstView: {
-    flex: 0.3,
-  },
-
+  firstView: {},
   secondView: {
     flex: 0.3,
   },

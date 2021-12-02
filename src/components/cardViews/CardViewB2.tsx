@@ -15,7 +15,7 @@ const CardViewB2 = () => {
         <Text>Deadlift</Text>
       </View>
       <View style={styles.secondView}>
-        <Text style={styles.secondTitle}>Today </Text>
+        <Text style={styles.secondTitle}>Fredag </Text>
         <Text style={styles.secondViewText}>5x5 {squat + 5} kg</Text>
         <Text style={styles.secondViewText}>5x5 {overhead + 2.5} kg</Text>
         <Text style={styles.secondViewText}>5x5 {deadlift + 5} kg</Text>
@@ -26,7 +26,6 @@ const CardViewB2 = () => {
 const styles = StyleSheet.create({
   item: {
     flex: 1,
-    backgroundColor: '#f9c2ff',
     padding: 10,
     marginVertical: 2,
     marginHorizontal: 2,

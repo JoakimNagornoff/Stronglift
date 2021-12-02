@@ -16,7 +16,7 @@ const CardViewA2 = () => {
         <Text>Barbell row</Text>
       </View>
       <View style={styles.secondView}>
-        <Text style={styles.secondTitle}>Today </Text>
+        <Text style={styles.secondTitle}>Fredag </Text>
         <Text style={styles.secondViewText}>5x5 {squat + 5} kg</Text>
         <Text style={styles.secondViewText}>5x5 {bench + 2.5} kg</Text>
         <Text style={styles.secondViewText}>5x5 {barbellrow + 2.5} kg</Text>
