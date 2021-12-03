@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 import {useAppSelector} from '../../store/Weights/hooks';
+import {Count} from '../constans/constans';
 
 const CardViewB = () => {
   const squat = useAppSelector(state => state.traning.squat);
@@ -12,15 +13,15 @@ const CardViewB = () => {
   return (
     <View style={styles.item}>
       <View style={styles.firstView}>
-        <Text style={styles.title}>WorkoutB</Text>
-        <Text>Squat</Text>
-        <Text>Overhead Press</Text>
-        <Text>Deadlift</Text>
+        <Text style={styles.firstTitle}>WorkoutB</Text>
+        <Text style={styles.firstText}>Squat</Text>
+        <Text style={styles.firstText}>Overhead Press</Text>
+        <Text style={styles.firstText}>Deadlift</Text>
       </View>
       <View style={styles.secondView}>
-        <Text style={styles.secondTitle}>Today </Text>
         {isWorkoutADone && (
           <>
+            <Text style={styles.secondTitle}>Today </Text>
             <Text style={styles.secondViewText}>5x5 {squat} kg</Text>
             <Text style={styles.secondViewText}>5x5 {overhead} kg</Text>
             <Text style={styles.secondViewText}>5x5 {deadlift} kg</Text>
@@ -28,8 +29,11 @@ const CardViewB = () => {
         )}
         {!isWorkoutADone && (
           <>
-            <Text style={styles.secondViewText}>5x5 {squat + 2.5} kg</Text>
-            <Text style={styles.secondViewText}>5x5 {overhead + 2.5} kg</Text>
+            <Text style={styles.secondTitle}>Onsdag </Text>
+            <Text style={styles.secondViewText}>
+              5x5 {squat * Count.multiplier + Count.twoFive} kg
+            </Text>
+            <Text style={styles.secondViewText}>5x5 {overhead * 1} kg</Text>
             <Text style={styles.secondViewText}>5x5 {deadlift + 5} kg</Text>
           </>
         )}
@@ -53,9 +57,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 0.5,
   },
-  title: {
+  firstTitle: {
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  firstText: {
+    marginTop: 10,
+    marginBottom: 10,
   },
   secondTitle: {
     textAlign: 'right',
@@ -64,6 +72,8 @@ const styles = StyleSheet.create({
   },
   secondViewText: {
     textAlign: 'right',
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 export default CardViewB;

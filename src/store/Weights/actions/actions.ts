@@ -6,6 +6,7 @@ import {
   ADD_NEW_WORKBOUT_B,
   IS_WORKOUT_A_DONE,
   WORKOUT_A_DONE,
+  EDIT_SQUAT,
 } from './types';
 
 export const AddHowManyWeeksData = (
@@ -58,5 +59,12 @@ export const AddNewWorkoutB = (
   return {
     type: ADD_NEW_WORKBOUT_B,
     payload: {squat, bench, barbellrow, overhead, deadlift},
+  };
+};
+
+export const EditSquat = (squat: number): TraningActionTypes => {
+  return {
+    type: EDIT_SQUAT,
+    payload: squat,
   };
 };

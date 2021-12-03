@@ -6,6 +6,7 @@ export const ADD_NEW_WORKOUT_A = 'ADD_NEW_WORKOUT_A';
 export const ADD_NEW_WORKBOUT_B = 'ADD_NEW_WORKBOUT_B';
 export const IS_WORKOUT_A_DONE = 'IS_WORKOUT_A_DONE';
 export const WORKOUT_A_DONE = 'WORKOUT_A_DONE';
+export const EDIT_SQUAT = 'EDIT_SQUAT';
 
 export interface TraningState {
   howManyWeeks: number;
@@ -43,10 +44,15 @@ interface WorkoutADoneAction {
   type: typeof WORKOUT_A_DONE;
   payload: boolean;
 }
+interface EditSquatAction {
+  type: typeof EDIT_SQUAT;
+  payload: number;
+}
 export type TraningActionTypes =
   | AddHowManyWeeksAction
   | isFirstWeekAction
   | AddNewWorkoutAction
   | AddNewWorkoutBAction
   | isWorkoutADoneAction
-  | WorkoutADoneAction;
+  | WorkoutADoneAction
+  | EditSquatAction;

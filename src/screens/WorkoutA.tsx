@@ -17,10 +17,10 @@ import {AddNewWorkoutA, WorkoutAdone} from '../store/Weights/actions/actions';
 import {useAppSelector} from '../store/Weights/hooks';
 
 import Icon from 'react-native-vector-icons/Feather';
+import {Count} from '../components/constans/constans';
 
 //what do to
-//1. border around each card
-//2. add date function
+//1. Animation for done workout
 
 // DO LATER give every card an id and try to edit one.
 // DO LATER edit weight and add to redux store
@@ -42,11 +42,11 @@ const WorkoutA = () => {
 
   const newWorkout = () => {
     //dispatch function everything from the week to workout B
-    const newSquat = squat + 7.5;
-    const newBench = bench + 5;
-    const newBarbellrow = barbellrow + 5;
-    const newOverhead = overhead + 2.5;
-    const newDeadlift = deadlift + 5;
+    const newSquat = squat * Count.multiplier + Count.seven;
+    const newBench = bench * Count.multiplier + Count.twoFive;
+    const newBarbellrow = barbellrow * Count.multiplier + Count.twoFive;
+    const newOverhead = overhead * Count.multiplier + Count.five;
+    const newDeadlift = deadlift * Count.multiplier + Count.ten;
     dispatch(
       AddNewWorkoutA(
         newSquat,
@@ -62,7 +62,7 @@ const WorkoutA = () => {
     <SafeAreaView style={styles.container}>
       <View
         style={{
-          flex: 0.3,
+          flex: 0.37,
           backgroundColor: isFirstA ? '#D3D3D3' : 'white',
         }}>
         <CardViewA />
@@ -75,7 +75,7 @@ const WorkoutA = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={{flex: 0.3, backgroundColor: isSecondA ? 'gray' : 'white'}}>
+      <View style={{flex: 0.37, backgroundColor: isSecondA ? 'gray' : 'white'}}>
         <CardViewB />
         <TouchableOpacity
           style={styles.checkButton}
@@ -84,7 +84,7 @@ const WorkoutA = () => {
         </TouchableOpacity>
       </View>
       <View
-        style={{flex: 0.3, backgroundColor: isThirdA ? '#D3D3D3' : 'white'}}>
+        style={{flex: 0.37, backgroundColor: isThirdA ? '#D3D3D3' : 'white'}}>
         <CardViewA2 />
         <TouchableOpacity
           onPress={() => {

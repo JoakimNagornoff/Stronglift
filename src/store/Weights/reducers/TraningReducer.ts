@@ -7,6 +7,7 @@ import {
   ADD_NEW_WORKBOUT_B,
   IS_WORKOUT_A_DONE,
   WORKOUT_A_DONE,
+  EDIT_SQUAT,
 } from '../actions/types';
 
 const initialState: TraningState = {
@@ -67,6 +68,12 @@ const TraningReducer = (
         barbellrow: action.payload.barbellrow,
         overhead: action.payload.overhead,
         deadlift: action.payload.deadlift,
+      };
+    }
+    case EDIT_SQUAT: {
+      return {
+        ...state,
+        squat: action.payload,
       };
     }
     default:

@@ -14,6 +14,7 @@ import CardViewB2 from '../components/cardViews/CardViewB2';
 import {AddNewWorkoutB, isWorkoutADone} from '../store/Weights/actions/actions';
 import {useAppSelector} from '../store/Weights/hooks';
 import Icon from 'react-native-vector-icons/Feather';
+import {Count} from '../components/constans/constans';
 
 const WorkoutB = () => {
   const navigation = useNavigation();
@@ -30,11 +31,11 @@ const WorkoutB = () => {
   const [isThirdB, setIsThirdB] = useState(false);
 
   const newWorkoutB = () => {
-    const newSquat = squat + 7.5;
-    const newBench = bench + 2.5;
-    const newBarbellrow = barbellrow + 2.5;
-    const newOverhead = overhead + 5;
-    const newDeadlift = deadlift + 10;
+    const newSquat = squat * Count.multiplier + Count.seven;
+    const newBench = bench * Count.multiplier + Count.twoFive;
+    const newBarbellrow = barbellrow * Count.multiplier + Count.twoFive;
+    const newOverhead = overhead * Count.multiplier + Count.five;
+    const newDeadlift = deadlift * Count.multiplier + Count.ten;
     dispatch(
       AddNewWorkoutB(
         newSquat,
@@ -48,7 +49,7 @@ const WorkoutB = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{flex: 0.3, backgroundColor: isFirstB ? 'gray' : 'white'}}>
+      <View style={{flex: 0.37, backgroundColor: isFirstB ? 'gray' : 'white'}}>
         <CardViewB />
         <TouchableOpacity
           style={styles.checkButton}
@@ -59,7 +60,7 @@ const WorkoutB = () => {
         </TouchableOpacity>
       </View>
       <View
-        style={{flex: 0.3, backgroundColor: isSecondB ? '#D3D3D3' : 'white'}}>
+        style={{flex: 0.37, backgroundColor: isSecondB ? '#D3D3D3' : 'white'}}>
         <CardViewA />
         <TouchableOpacity
           style={styles.checkButton}
@@ -69,7 +70,7 @@ const WorkoutB = () => {
           <Icon name={isSecondB ? 'check-circle' : 'circle'} size={30} />
         </TouchableOpacity>
       </View>
-      <View style={{flex: 0.3, backgroundColor: isThirdB ? 'gray' : 'white'}}>
+      <View style={{flex: 0.37, backgroundColor: isThirdB ? 'gray' : 'white'}}>
         <CardViewB2 />
         <TouchableOpacity
           style={styles.checkButton}
